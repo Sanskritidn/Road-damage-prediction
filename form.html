@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Road Damage Risk Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+</head>
+<body>
+    <h2>Road Damage Risk Prediction</h2>
+    <form action="/predict" method="post">
+        <label>Road Age (years):</label>
+        <input type="number" name="road_age" step="0.1" required>
+
+        <label>Traffic Load (vehicles/day):</label>
+        <input type="number" name="traffic_load" step="1" required>
+
+        <label>Rainfall (mm/month):</label>
+        <input type="number" name="rainfall" step="0.1" required>
+
+        <label>Soil Type:</label>
+        <select name="soil_type">
+            <option value="Clay">Clay</option>
+            <option value="Sandy">Sandy</option>
+            <option value="Loamy">Loamy</option>
+        </select>
+
+        <label>Pavement Type:</label>
+        <select name="pavement_type">
+            <option value="Flexible">Flexible</option>
+            <option value="Rigid">Rigid</option>
+        </select>
+
+        <label>Maintenance Frequency (times/year):</label>
+        <input type="number" name="maintenance_freq" step="1" required>
+
+        <label>Temperature Variation (°C):</label>
+        <input type="number" name="temp_variation" step="0.1" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            Predicted Damage Risk: <strong>{{ result }}</strong>
+        </div>
+    {% endif %}
+</body>
+</html>
